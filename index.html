@@ -90,14 +90,6 @@
     display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
   }
   h3 { font-size: 1.05rem; margin: 20px 0 6px; }
-  .badge {
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--gold);
-    background: var(--gold-bg);
-    border-radius: 999px;
-    padding: 2px 10px;
-  }
   ol.steps { list-style: none; counter-reset: step; padding: 0; margin: 12px 0; }
   ol.steps li {
     counter-increment: step;
@@ -136,11 +128,6 @@
   dl.settings div:last-child { border-bottom: 0; }
   dl.settings dt { font-weight: 600; }
   dl.settings dd { margin: 0; }
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-  .plan { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
-  .plan.premium { border-color: var(--blue-2); background: var(--tint); }
-  .plan h3 { margin-top: 0; }
-  .plan ul { padding-left: 1.1em; }
   footer { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 28px; }
   @media (max-width: 600px) {
     body { font-size: 16px; }
@@ -149,7 +136,6 @@
     .card { padding: 26px 22px 20px; }
     nav.toc ul { columns: 1; }
     dl.settings div { grid-template-columns: 1fr; gap: 2px; }
-    .plans { grid-template-columns: 1fr; }
   }
   @media print {
     header { background: none; color: var(--ink); padding: 20px 0; }
@@ -159,6 +145,13 @@
     nav.toc { display: none; }
     ol.steps li::before { background: none; color: var(--ink); border: 1.5px solid var(--ink); }
   }
+  .toc-groups { columns: 2; column-gap: 28px; }
+  .toc-group { break-inside: avoid; margin-bottom: 12px; }
+  .toc-head { font-weight: 600; text-decoration: none; display: block; padding: 2px 0; }
+  nav.toc .toc-group ul { columns: 1; list-style: none; padding: 0 0 0 12px; margin: 2px 0 0; }
+  h3 { scroll-margin-top: 16px; }
+  .path { white-space: normal !important; }
+  @media (max-width: 600px) { .toc-groups { columns: 1; } }
 </style>
 </head>
 <body>
@@ -173,222 +166,125 @@
 
 <nav class="toc" aria-label="Contents">
   <strong>Contents</strong>
-  <ul>
-    <li><a href="#getting-started">Getting started</a></li>
-    <li><a href="#points">Awarding points</a></li>
-    <li><a href="#tv">TV and projector</a></li>
-    <li><a href="#tools">Classroom tools</a></li>
-    <li><a href="#random-pick">Random Pick</a></li>
-    <li><a href="#timer">Timer</a></li>
-    <li><a href="#group-maker">Group Maker</a></li>
-    <li><a href="#secret-student">Secret Student</a></li>
-    <li><a href="#mystery-items">Mystery Items</a></li>
-    <li><a href="#shared-goals">Shared Goals</a></li>
-    <li><a href="#rewards">Rewards</a></li>
-    <li><a href="#jobs">Jobs</a></li>
-    <li><a href="#leaderboard">Leaderboard</a></li>
-    <li><a href="#stats">Points History and Stats</a></li>
-    <li><a href="#settings">Settings</a></li>
-    <li><a href="#sync">iCloud Sync and backups</a></li>
-    <li><a href="#plans">Canoe Free and Premium</a></li>
-    <li><a href="#help">Help and privacy</a></li>
-  </ul>
-</nav>
-
-<section id="getting-started">
-  <h2>Getting started</h2>
-  <ol class="steps">
-    <li><strong>Add your class.</strong> Tap Add Students and type a name, then press return to add the next one. You can type one name per line to add several at once.</li>
-    <li><strong>Choose characters.</strong> Give each student a character and a card colour.</li>
-    <li><strong>Mark who is here.</strong> Mark students as absent so Random Pick and other tools skip them.</li>
-    <li><strong>Share it on the big screen.</strong> Connect to a TV or projector so the whole class can watch their points grow.</li>
-  </ol>
-  <p class="tip"><b>Tip:</b> You can reopen these steps at any time from <span class="path">Settings → Quick Start Guide</span>.</p>
-</section>
-
-<section id="points">
-  <h2>Awarding points</h2>
-  <p>Each student has a card on the Points screen.</p>
-  <ul>
-    <li>Tap <strong>+1</strong> or <strong>+5</strong> to award points.</li>
-    <li>Tap <strong>−1</strong> to take a point back.</li>
-    <li>Undo is always at the top right.</li>
-  </ul>
-  <p>If your class uses teams <span class="badge">Premium</span>, you can award points to teams and compare their totals.</p>
-  <p>To reset points, use Reset Points or Reset All Points. Names, jobs and rewards stay, and you can undo the change.</p>
-</section>
-
-<section id="tv">
-  <h2>TV and projector</h2>
-  <p>Canoe is made for the whole class to see. Connect your iPad to a projector, TV or display with AirPlay or a cable.</p>
-  <h3>Smart Display</h3>
-  <p>By default, Canoe uses Smart Display. It shows a class-friendly view on the big screen that follows the page or tool you have open, such as the Points Board, Random Pick or the Leaderboard. Settings, editors, Teacher Peek and stats are never shown on the big screen.</p>
-  <h3>Mirror My Screen</h3>
-  <p>To show exactly what's on your iPad instead, go to <span class="path">Settings → Appearance &amp; Accessibility → TV and Projector → Mirror My Screen</span>.</p>
-  <p class="tip"><b>Tip:</b> With Mirror My Screen, the class sees everything you open. Disconnect the display before opening anything private.</p>
-</section>
-
-<section id="tools">
-  <h2>Classroom tools</h2>
-  <p>Open the Tools tab and tap any tool. Each one has an ⓘ button that explains how it works.</p>
-  <p>Show or hide tools in <span class="path">Settings → Classroom Tools</span>. Hiding a tool keeps its data.</p>
-</section>
-
-<section id="random-pick">
-  <h2>Random Pick</h2>
-  <ol class="steps">
-    <li><strong>Pick a name.</strong> Canoe spins through present students and lands on one.</li>
-    <li><strong>Everyone gets a turn.</strong> Nobody is picked twice until everyone has had a turn. Choose Start Over to reset.</li>
-    <li><strong>Teams too.</strong> When your class uses teams, Random Pick chooses a team instead.</li>
-  </ol>
-</section>
-
-<section id="timer">
-  <h2>Timer</h2>
-  <ol class="steps">
-    <li><strong>Set the time.</strong> Tap the time to choose a duration of up to 3 hours.</li>
-    <li><strong>Start and carry on.</strong> The timer keeps running when you switch tabs or apps. Turn on Show Timer on Points to keep it in view.</li>
-    <li><strong>Time's up.</strong> Canoe plays a chime and shows an alert wherever you are in the app. Turn on notifications to be alerted outside Canoe too.</li>
-  </ol>
-</section>
-
-<section id="group-maker">
-  <h2>Group Maker</h2>
-  <ol class="steps">
-    <li><strong>Choose a mode.</strong> Random Groups sorts the class for you. Pick &amp; Choose lets each chosen student pick who joins them.</li>
-    <li><strong>Set the size.</strong> Divide by the number of groups or by students per group. Absent students are left out.</li>
-    <li><strong>Keep students apart.</strong> To stop certain students being placed in the same group, tap the gear icon in the top-left corner and choose Teacher Preferences. These settings are private and never shown to the class.</li>
-    <li><strong>Ready next time.</strong> Canoe remembers the last groups you made. Tap Make New Groups for a fresh mix.</li>
-  </ol>
-</section>
-
-<section id="secret-student">
-  <h2>Secret Student <span class="badge">Premium</span></h2>
-  <ol class="steps">
-    <li><strong>Agree on a goal.</strong> Tell the class what you're looking for today, such as kind words, staying on task or lining up quietly.</li>
-    <li><strong>Canoe picks in secret.</strong> Canoe chooses a present student at random. Only you can see who it is, using Teacher Peek. Smart Display never shows it on the TV. If you're mirroring your screen, hide it when you peek.</li>
-    <li><strong>Keep an eye on them.</strong> Give the class reminders through the day, such as "Our Secret Student is having a great morning!"</li>
-    <li><strong>Goal met: reveal and celebrate.</strong> Check Goal achieved and reveal them. Every present student earns +1 point, and the Secret Student earns a +1 bonus.</li>
-    <li><strong>Goal not met: keep it secret.</strong> Choose Goal Not Met. The name stays secret, so nobody is singled out, and no points are awarded.</li>
-  </ol>
-</section>
-
-<section id="mystery-items">
-  <h2>Mystery Items <span class="badge">Premium</span></h2>
-  <ol class="steps">
-    <li><strong>Spot the mess.</strong> Before tidy-up, look for things that haven't been put away: pencils, wrappers, a stray sock.</li>
-    <li><strong>Choose them in secret.</strong> Add those items in Canoe. If there are two of the same thing, add it twice. Adding a colour or location is optional but helps you tell them apart.</li>
-    <li><strong>Tidy up together.</strong> Tell the class there are mystery items hidden in the mess. Nobody knows which ones count, so everyone pitches in.</li>
-    <li><strong>Reveal and reward.</strong> Reveal the items one at a time and choose who picked up each one. They earn +1 point straight away.</li>
-  </ol>
-</section>
-
-<section id="shared-goals">
-  <h2>Shared Goals <span class="badge">Premium</span></h2>
-  <ol class="steps">
-    <li><strong>Set a goal.</strong> Choose a reward and a points target, such as 150 points for free choice time. Then choose who's working towards it: students or teams.</li>
-    <li><strong>Students earn together.</strong> Every point a student earns counts towards a student goal, so the class cheers each other on.</li>
-    <li><strong>Teams work together or race.</strong> Team goals use team points. Choose Together to add every team's points to one bar, or Race to give each team its own bar. The first team to reach the target wins.</li>
-    <li><strong>Show progress.</strong> Show goals on the Points screen so everyone can see how close they are.</li>
-  </ol>
-</section>
-
-<section id="rewards">
-  <h2>Rewards <span class="badge">Premium</span></h2>
-  <ol class="steps">
-    <li><strong>Add rewards.</strong> Create rewards such as a sticker, choose a seat or five minutes of free time.</li>
-    <li><strong>Award them.</strong> Give a reward to a student, a team or the whole class. Canoe shows a celebration when one is earned.</li>
-    <li><strong>Use points for rewards.</strong> Turn on Spend Points on Rewards in <span class="path">Settings → Classroom Rules</span> to give rewards a cost.</li>
-    <li><strong>Check the history.</strong> Reward History shows who received what and when, so nobody is missed.</li>
-  </ol>
-</section>
-
-<section id="jobs">
-  <h2>Jobs <span class="badge">Premium</span></h2>
-  <ol class="steps">
-    <li><strong>Add jobs.</strong> Create jobs such as line leader, board monitor or plant carer, and choose how many helpers each one needs.</li>
-    <li><strong>Assign helpers.</strong> Assign students one by one, or choose Assign Helpers to share jobs randomly among students who are present.</li>
-    <li><strong>Rotate when you like.</strong> Assign again whenever it's time for a change, or have Canoe rotate helpers every Monday or every month. Clearing assignments never changes anyone's points.</li>
-  </ol>
-</section>
-
-<section id="leaderboard">
-  <h2>Leaderboard <span class="badge">Premium</span></h2>
-  <p>Students or teams are ranked on a podium by their current points. Show the leaderboard when it motivates your class. You can hide it in <span class="path">Settings → Classroom Tools</span>.</p>
-</section>
-
-<section id="stats">
-  <h2>Points History and Stats <span class="badge">Premium</span></h2>
-  <ol class="steps">
-    <li><strong>Pick a day.</strong> Use the calendar to see every point given on any day.</li>
-    <li><strong>Look at the bigger picture.</strong> Switch to a week, month or school year to see totals, top earners and trends.</li>
-    <li><strong>Spot who needs a boost.</strong> Stats show students with few points, so nobody is overlooked.</li>
-  </ol>
-  <p class="tip"><b>Tip:</b> Open <span class="path">Settings → School Year</span> to choose the first and last day of your school year. The School Year view uses these dates.</p>
-</section>
-
-<section id="settings">
-  <h2>Settings</h2>
-  <dl class="settings">
-    <div><dt>Classroom Rules</dt><dd>Point rules, such as spending points on rewards.</dd></div>
-    <div><dt>Classroom Tools</dt><dd>Show or hide each tool. Hiding a tool keeps its data.</dd></div>
-    <div><dt>Navigation Order</dt><dd>Rearrange the tabs. Choose Reset to Default Order to undo.</dd></div>
-    <div><dt>Appearance &amp; Accessibility</dt><dd>Themes, student tiles, card colours and TV and projector options.</dd></div>
-    <div><dt>School Year</dt><dd>The first and last day of your school year.</dd></div>
-    <div><dt>Backups &amp; Recovery</dt><dd>Export a backup, restore a class or start a new empty class.</dd></div>
-    <div><dt>Sync with iCloud</dt><dd>Keep your class the same across your devices.</dd></div>
-    <div><dt>Help &amp; Support</dt><dd>Quick Start Guide, Send Feedback, Privacy Policy and Restore Purchases.</dd></div>
-  </dl>
-</section>
-
-<section id="sync">
-  <h2>iCloud Sync and backups</h2>
-  <h3>iCloud Sync <span class="badge">Premium</span></h3>
-  <p>Turn on Sync with iCloud in Settings to keep your class the same on your iPad and other devices. Your class is stored in your own private iCloud account and is end-to-end encrypted. The first time you sync, choose whether to keep this device's class or use the class in iCloud.</p>
-  <h3>Backups</h3>
-  <p>Canoe saves automatically. You can also make your own backup with Export Backup and save the file wherever you like.</p>
-  <ul>
-    <li>Export Backup is available on every plan.</li>
-    <li>Restore Class from a backup file needs Canoe Premium.</li>
-  </ul>
-  <p class="tip"><b>Tip:</b> Backup files aren't encrypted. Keep them somewhere secure and follow your school's privacy rules.</p>
-</section>
-
-<section id="plans">
-  <h2>Canoe Free and Canoe Premium</h2>
-  <div class="plans">
-    <div class="plan">
-      <h3>Canoe Free includes</h3>
-      <ul>
-        <li>Points for up to 12 students</li>
-        <li>Random Pick, Timer and Group Maker</li>
-        <li>Points Board and Smart Display</li>
-        <li>Animal and monster characters</li>
-        <li>Automatic saving and backup export</li>
-      </ul>
+  <div class="toc-groups">
+    <div class="toc-group"><a class="toc-head" href="#make-it-your-own">Make It Your Own</a>
+      <ul><li><a href="#colours-characters-and-themes">Colours, characters and themes</a></li><li><a href="#choose-which-tools-you-see">Choose which tools you see</a></li><li><a href="#classroom-rules">Classroom Rules</a></li><li><a href="#set-your-school-year">Set your school year</a></li></ul>
     </div>
-    <div class="plan premium">
-      <h3>Canoe Premium adds</h3>
-      <ul>
-        <li><strong>Whole-class activities:</strong> Secret Student, Mystery Items, Shared Goals</li>
-        <li><strong>Rewards and recognition:</strong> Rewards, Teams, Leaderboard</li>
-        <li><strong>Classroom management:</strong> Jobs, Points History and Stats</li>
-        <li><strong>Students and characters:</strong> Up to 100 students, every character collection and every colour theme</li>
-        <li><strong>Sync:</strong> iCloud Sync and restoring from a backup</li>
-      </ul>
+    <div class="toc-group"><a class="toc-head" href="#school-day">During the School Day</a>
+      <ul><li><a href="#attendance-and-points">Attendance and points</a></li><li><a href="#teams">Teams</a></li><li><a href="#jobs-and-rewards">Jobs and rewards</a></li><li><a href="#secret-student">Secret Student</a></li><li><a href="#mystery-items">Mystery Items</a></li><li><a href="#group-maker">Group Maker</a></li><li><a href="#work-towards-a-shared-goal">Work towards a shared goal</a></li><li><a href="#set-a-timer">Set a timer</a></li><li><a href="#leaderboard">Leaderboard</a></li><li><a href="#points-history-and-stats">Points History and Stats</a></li><li><a href="#quick-tools">Quick tools</a></li></ul>
+    </div>
+    <div class="toc-group"><a class="toc-head" href="#share">Share with the Class</a>
+      <ul><li><a href="#use-points-board">Use Points Board</a></li><li><a href="#use-smart-display">Use Smart Display</a></li></ul>
+    </div>
+    <div class="toc-group"><a class="toc-head" href="#safe">Keep Your Classroom Safe</a>
+      <ul><li><a href="#saving-and-backups">Saving and backups</a></li><li><a href="#your-subscription">Your subscription</a></li></ul>
+    </div>
+    <div class="toc-group"><a class="toc-head" href="#help">Need a Hand?</a>
+      <ul><li><a href="#send-feedback">Send feedback</a></li></ul>
     </div>
   </div>
-  <p>Canoe Premium is available as a monthly or annual subscription, with a one-week free trial for new subscribers. Apple handles all payments.</p>
-  <p>If Premium ends, all your classroom records stay. Choose which 12 students to use on the Free plan with Choose Free Plan Students, and everything comes back when you resubscribe.</p>
-  <p>Already subscribed on another device? Tap Restore Purchases.</p>
+</nav>
+
+<section id="make-it-your-own" class="group">
+  <h2>Make It Your Own</h2>
+  <h3 id="colours-characters-and-themes">Colours, characters and themes</h3>
+  <p>Tap Edit on a student’s tile to change their name, character or tile colour. To change only the character, touch and hold it.</p>
+  <p><span class="path">Settings → Appearance &amp; Accessibility</span> lets you choose a theme, show or hide characters and reduce movement. Every theme is included with your subscription.</p>
+  <h3 id="choose-which-tools-you-see">Choose which tools you see</h3>
+  <p>Open <span class="path">Settings → Classroom Tools</span> to show or hide Jobs, Rewards, Secret Student, Shared Goals, Timer and Leaderboard. Hiding a tool keeps its saved data. Turning off Timer also stops its countdown.</p>
+  <p>In the Points Screen section, choose whether the date and time show under your class name, and whether Timer and Shared Goals appear above your student tiles.</p>
+  <h3 id="classroom-rules">Classroom Rules</h3>
+  <p>Open <span class="path">Settings → Classroom Rules</span> to have Canoe reset student points every day, every Monday or every month. Canoe asks before resetting, the first time you open the app in that period. Shared goals are never reset.</p>
+  <p>Rotate Jobs Automatically moves helpers on to the next job every Monday or every month, and Spend Points on Rewards lets rewards cost points.</p>
+  <h3 id="set-your-school-year">Set your school year</h3>
+  <p>Open <span class="path">Settings → School Year</span> to choose the first and last day of your school year. Points History and Stats uses them for its School Year view.</p>
 </section>
 
-<section id="help">
-  <h2>Help and privacy</h2>
-  <p>Canoe has no accounts, analytics, advertising or tracking. Your classroom information stays on your device unless you choose to turn on iCloud Sync or export a backup. Read the full privacy policy in <span class="path">Settings → Privacy Policy</span>.</p>
-  <p>Found a bug or have an idea? Use <span class="path">Settings → Send Feedback</span>, or email <a href="mailto:canoe.app@proton.me">canoe.app@proton.me</a>.</p>
+<section id="school-day" class="group">
+  <h2>During the School Day</h2>
+  <h3 id="attendance-and-points">Attendance and points</h3>
+  <p>Tap Present on a student’s tile to mark them absent; tap Absent when they return. Their saved points stay. Absent students are excluded from group point awards and random student picks. To bring the whole class back at once, tap Options, then Mark Everyone Present.</p>
+  <p>Tap Options above the student tiles, then Select Students to choose several students and give them −1, +1 or +5 together. Select All chooses every present student on the page. Award +1 to All Present celebrates the whole class.</p>
+  <p>Options also has Sort By, which shows the tiles in the order you added them, by name or by most points. Points Board and your TV follow the same order. On Points, Most Points catches up a moment after you finish awarding, so tiles stay put while you tap. You’ll find the present-students filter, the original colour order and Reset All Points there too.</p>
+  <h3 id="teams">Teams</h3>
+  <p>Choose Teams at the top of Points, then Add Team. Give it a name and choose its members. Team scores are separate from individual student scores.</p>
+  <h3 id="jobs-and-rewards">Jobs and rewards</h3>
+  <p>New classes start with no jobs or rewards. Tap + on Jobs or Rewards, then choose from the ideas or tap Create Custom to make your own. Switch to Your Jobs or Your Rewards to change one, or tap − to remove one. Changes are saved when you tap Done.</p>
+  <p>In Jobs, choose a helper for each slot. <span class="path">Assign Helpers → Assign Randomly</span> shares jobs among present students. To move helpers on automatically every Monday or every month, choose Rotate Jobs Automatically at the bottom of the Add Jobs sheet, or in <span class="path">Settings → Classroom Rules</span>.</p>
+  <p>In Rewards, tap a reward and choose who receives it.</p>
+  <p>To let students spend their points, turn on Spend Points on Rewards at the top of the Add Rewards sheet, or in <span class="path">Settings → Classroom Rules</span>. Then choose a cost under each reward. Canoe shows each student’s points when you award a reward, and won’t award it to anyone without enough. Whole-class rewards are always free. Undo gives the points back, and Points History shows spending separately from points taken away.</p>
+  <h3 id="secret-student">Secret Student</h3>
+  <p>Secret Student encourages the whole class to do their best. Canoe secretly picks one present student, and only you can see who it is. Nobody knows who it might be, so everyone has a reason to make good choices and earn the extra point.</p>
+  <p>Agree on a goal with your class, then tap Pick Secret Student. Tap the eye button (Teacher Peek) to see the name in private. Smart Display never shows Teacher Peek on the TV; if you mirror your screen instead, hide it before peeking. The name closes after five seconds.</p>
+  <p>Through the day, give the class reminders about how the Secret Student is doing, without saying who it is.</p>
+  <p>Absent students are never chosen. If the Secret Student is marked absent during the round, Canoe quietly seals another present student instead, so nobody can tell who it was. Tap the eye button to see the new name.</p>
+  <p>If the goal is met, check Goal achieved, then tap Reveal Secret Student when it appears. Each present student receives +1, and the Secret Student receives one extra point.</p>
+  <p>If the goal isn’t met, tap Goal Not Met. The name stays secret, so nobody is singled out, and no points are awarded. Pick a new Secret Student next time.</p>
+  <p>This Week’s Rounds shows the character of each revealed Secret Student. Rounds that weren’t revealed stay empty. Tap a round to change the student or remove it. Students take turns before the selection cycle starts again.</p>
+  <h3 id="mystery-items">Mystery Items</h3>
+  <p>Mystery Items makes tidy-up time worth joining in. Many students don’t see the point of tidying, so some won’t help. A chance to earn a point gives everyone a reason to pitch in, so the room gets tidy faster and you spend less time chasing it.</p>
+  <p>Before tidy-up, look around for things that haven’t been put away, usually on the floor: pencils, wrappers, a stray sock. Tap each one to add it. If there are two of the same thing, tap it twice.</p>
+  <p>Tap Next to add an optional colour and location for each item, so you can tell them apart. Skip any you don’t need, then tap Begin Tidy-Up.</p>
+  <p>Tell the class there are mystery items hidden in the mess. While they tidy up, use Teacher Peek to check your list. When they’ve finished, tap Start the Reveal and reveal one item at a time. Choose the student who picked up each item to award them +1 point. Use Change Finder or Remove Point if you choose the wrong student. Tap Back to return to an earlier item, or to Tidy-Up Time if nothing has been revealed yet.</p>
+  <p>Edit the quick-add list from the ••• menu on the Choose Your Items screen. Tap ⓘ at the top right to see the introduction again.</p>
+  <h3 id="group-maker">Group Maker</h3>
+  <p>Open <span class="path">Tools → Group Maker</span>. Choose Random Groups to divide present students by group size or number of groups. Absent students are left out.</p>
+  <p>Pick &amp; Choose draws a student at random, who then chooses their own partners. Everyone placed is removed from the next draw.</p>
+  <p>Group Maker remembers the last groups you made, so they’re waiting the next time you open it. Students who are absent or removed are left out. Tap Make New Groups for a fresh mix.</p>
+  <p>To stop certain students being placed in the same group, tap the gear icon in the top-left corner of Group Maker and choose Teacher Preferences. The rules apply to both modes and are never shown to the class.</p>
+  <h3 id="work-towards-a-shared-goal">Work towards a shared goal</h3>
+  <p>Open <span class="path">Tools → Shared Goals</span> and tap Add Goal. Choose a reward and a points target, such as 150 points for Free choice. You can add as many goals as you like.</p>
+  <p>Choose who is working towards each goal. Student goals use student points and appear in the Students view of Points. Team goals appear in the Teams view: Together adds every team’s points to one bar, and Race gives each team its own bar. The first team to reach a race target wins, and teams that reach it at the same moment share the win. Use Start New Race from the goal’s ••• menu to race again.</p>
+  <p>Choose how each goal counts. All Points counts all the points your class already has, including saved points for absent students, plus any new ones. New Points Only begins at zero and counts new points earned after the goal began. Student goals don’t include team points. Taking points away, resetting points or spending them on rewards also lowers All Points bars; New Points Only goals keep what was earned when points are spent on rewards.</p>
+  <p>Turn on Show on Points for each goal you want at the top of Points. Use the ••• button on a goal there to edit it or choose which goals to show. With Smart Display, the same goals appear under the class name on the TV. Reaching a goal does not spend or reset anyone’s points.</p>
+  <h3 id="set-a-timer">Set a timer</h3>
+  <p>Open Timer and tap 2, 5 or 10 min for a quick time. For any other length, tap the time while it is stopped, use the hour, minute and second wheels, then tap Done. Tap Start when you’re ready. You can Pause or Reset whenever you need.</p>
+  <p>Show Timer on Points keeps it beside your classroom work. Its ••• button lets you start, reset or set the time without leaving Points. It continues across tabs and while you use another app. Enable Notify When Time Is Up if you want a background alert.</p>
+  <h3 id="leaderboard">Leaderboard</h3>
+  <p>Leaderboard shows first, second and third place for students or teams. Equal scores share a place.</p>
+  <p>Prefer not to rank? Turn it off in <span class="path">Settings → Classroom Tools</span>. Points and their history are unaffected.</p>
+  <h3 id="points-history-and-stats">Points History and Stats</h3>
+  <p>Open <span class="path">Tools → Points History and Stats</span>. Tap a day on the calendar to see every point given that day. Days with points show a dot.</p>
+  <p>Choose Day, Week, Month or School Year to see totals, a chart of points given, top earners and students who could use a boost. Tap a student, or use the filter at the top, to see only their history.</p>
+  <p>Points spent on rewards show as their own line, not as points taken away, and never lower anyone’s place in Top Earners.</p>
+  <h3 id="quick-tools">Quick tools</h3>
+  <p>Open the Tools tab, or tap Tools beside Undo on any screen, for Random Pick, Timer, Group Maker, Points Board, Points History and Stats and Shared Goals. Hidden tools can be switched back on in <span class="path">Settings → Classroom Tools</span>.</p>
 </section>
 
+<section id="share" class="group">
+  <h2>Share with the Class</h2>
+  <p>Canoe is made for the big screen! Connect your iPad or iPhone to a projector, TV or display with AirPlay or a cable, and the whole class can watch their points grow, cheer for the Secret Student reveal and count down with the timer together.</p>
+  <h3 id="use-points-board">Use Points Board</h3>
+  <p>Open <span class="path">Tools → Points Board</span> to show student names, colours and points full screen on your iPad or iPhone. Use Layout to choose Comfortable, Compact or Fit Everyone. Fit Everyone keeps the whole class visible without scrolling. Layout also has Sort By, shared with Points, so the board and your TV show the class in the same order.</p>
+  <p>Tap Done to return to your controls.</p>
+  <h3 id="use-smart-display">Use Smart Display</h3>
+  <p>Connect a TV or projector with AirPlay or a cable, and Smart Display shows a version of Canoe made for the class. It follows along as you go: your class’s points with any Shared Goals you show on Points, Random Pick’s spin, the Timer, Group Maker, Secret Student, Mystery Items, the Leaderboard, Shared Goals, Jobs and Rewards. Settings, editors, Teacher Peek and stats never appear on the big screen, and Mystery Items stay secret until you flip each card. Can’t see your TV? Many school networks block AirPlay, so ask your IT team or use a cable.</p>
+  <p>The bottom of the Tools page shows whether Smart Display is on.</p>
+  <p>To show exactly what’s on your iPad or iPhone instead, choose <span class="path">Settings → Appearance &amp; Accessibility → TV and Projector → Mirror My Screen</span>.</p>
+</section>
+
+<section id="safe" class="group">
+  <h2>Keep Your Classroom Safe</h2>
+  <h3 id="saving-and-backups">Saving and backups</h3>
+  <p>Canoe saves classroom changes automatically on your device. Tap Done to finish editing; there is no separate Save button. If saving fails, a message appears with a Retry option.</p>
+  <p>Keep the same class on your iPad, iPhone and Mac: turn on <span class="path">Settings → iCloud Sync</span> on each device. Your class is stored in your own iCloud account and end-to-end encrypted. Points given on two devices at once are added together, not lost.</p>
+  <p>Use <span class="path">Settings → Backups &amp; Recovery → Export Backup</span> to keep an extra copy or move your class to another device. Restore Backup from Files opens a saved backup. If you replace or reset your class by mistake, Restore Local Recovery Copy brings back the previous one.</p>
+  <p>Restoring a backup replaces the current class after confirmation. A local recovery copy is kept before a restore or reset. Deleting the app removes its local data, so export a backup first.</p>
+  <p>iCloud Sync and exporting or restoring backups need a subscription. The local recovery copy is always available.</p>
+  <h3 id="your-subscription">Your subscription</h3>
+  <p>Canoe is one subscription, billed monthly or yearly. Both plans include all of Canoe: points and attendance for up to 100 students and teams, characters and colour themes, Rewards, Jobs, Secret Student, Mystery Items, Shared Goals, Leaderboard, Timer, Random Pick, Group Maker, Smart Display, Points History and Stats, iCloud Sync and backups. New subscribers can try it free first.</p>
+  <p>Before you subscribe, Explore a Sample Class on the welcome screen to try every feature with made-up students. Nothing in the sample class is saved.</p>
+  <p>While you explore the sample, a Sample chip sits at the top left of the screen. Tap it to start your own class or exit the sample. If your subscription has ended, the same spot shows a Read Only chip with Subscribe and Try Sample Class; trying the sample sets your own class aside untouched.</p>
+  <p><span class="path">Settings → Your Subscription</span> shows your plan. Tap it to subscribe, or to switch between Monthly and Yearly or cancel in your Apple Account. View Plans and Restore Purchases are there too.</p>
+  <p>If your subscription ends, your students and classroom records stay saved on this device and you can still view them. Your class is read only, and backups and iCloud Sync are paused, until you subscribe again, which restores everything.</p>
+  <p>Restoring purchases restores subscription access. To move classroom data to another device, export and restore a classroom backup separately.</p>
+</section>
+
+<section id="help" class="group">
+  <h2>Need a Hand?</h2>
+  <h3 id="send-feedback">Send feedback</h3>
+  <p>In Settings, open <span class="path">Help &amp; Support → Send Feedback</span> to describe a bug or suggest a feature. Please leave student names and private classroom details out of your message.</p>
+</section>
 </article>
 <footer>Canoe, made in Canada 🍁</footer>
 </main>
